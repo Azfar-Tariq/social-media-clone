@@ -9,25 +9,30 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ image, username, caption }) => {
   return (
-    <div className="post mb-4">
-      <div className="header flex items-center mb-2">
+    <div className="mb-4 bg-white rounded-lg shadow">
+      <div className="flex items-center p-4">
         <Image
-          src={`/images/${image}`}
+          src={image}
           alt={username}
           width={40}
           height={40}
-          className="w-10 h-10 rounded-full mr-2"
+          className="w-10 h-10 rounded-full object-cover mr-2"
         />
         <p className="font-bold">{username}</p>
       </div>
       <Image
-        src={`/images/${image}`}
+        src={image}
         alt={caption}
-        width={40}
-        height={40}
-        className="w-full rounded-lg"
+        width={600}
+        height={600}
+        className="w-full object-cover"
       />
-      <p className="mt-2">{caption}</p>
+      <div className="p-4">
+        <p>
+          <span className="font-bold mr-2">{username}</span>
+          {caption}
+        </p>
+      </div>
     </div>
   );
 };

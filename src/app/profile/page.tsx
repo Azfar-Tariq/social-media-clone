@@ -1,23 +1,13 @@
 "use client";
+import useUser from "@/hooks/useUser";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
+  const userId = useUser();
   const router = useRouter();
-  const [user, setUser] = useState("");
-
-  async function getData() {
-    const response = await axios.get("/api/users/me");
-    console.log(response.data);
-    setUser(response.data.data._id);
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const logout = async () => {
     try {
@@ -37,12 +27,12 @@ export default function ProfilePage() {
       <hr />
       <p>Profile page</p>
       <h2>
-        {user === "" ? (
+        {userId === "" ? (
           "User Not Found"
         ) : (
-          <Link href={`/profile/${user}`}>
+          <Link href={`/profile/${userId}`}>
             <div className="px-2 py-1 bg-amber-300 text-black rounded-lg hover:underline">
-              ID: {user}
+              ID: {userId}
             </div>
           </Link>
         )}

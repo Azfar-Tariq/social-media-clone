@@ -10,13 +10,13 @@ const Story: React.FC<StoryProps> = ({ image, username }) => {
   return (
     <div>
       <Image
-        src={`/images/${image}`}
+        src={image}
         alt={username}
-        width={40}
-        height={40}
-        className="w-16 h-16 rounded-full"
+        width={64}
+        height={64}
+        className="w-16 h-16 rounded-full object-cover"
       />
-      <p className="text-xs">{username}</p>
+      <p className="text-xs text-center mt-1">{username}</p>
     </div>
   );
 };
